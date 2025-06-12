@@ -8,7 +8,7 @@ import java.util.List;
  * - Priority: 1 = emergency, 2 = normal
  * - A* path (start to destination list of nodes)
  */
-public class Vehicle {
+public class Vehicle implements Processable {
     private final String id;
     private final String direction;
     private final int priority; // 1 = emergency, 2 = normal
@@ -21,8 +21,15 @@ public class Vehicle {
         this.path = path;
     }
 
+    @Override
     public String getId() { return id; }
+
+    @Override
     public String getDirection() { return direction; }
+
+    @Override
     public int getPriority() { return priority; }
+
+    @Override
     public List<String> getPath() { return path; }
 }

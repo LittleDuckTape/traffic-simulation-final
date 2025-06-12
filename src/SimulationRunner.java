@@ -65,6 +65,7 @@ public class SimulationRunner {
         double runtime = (endTime - startTime) / 1e9;
 
         // Output runtime
+        output.append("\n-------------------------\n");
         output.append(String.format("Mode: %s | Input: %d | Runtime: %.5f s\n\n", mode, vehicleCount, runtime));
 
         // Output complexity explanation
