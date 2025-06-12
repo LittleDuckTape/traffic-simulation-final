@@ -70,15 +70,22 @@ public class TrafficSimulatorGUI extends JFrame {
                 // Run simulation with a slight delay to simulate loading
                 new Timer(1000, new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
-                        String result = SimulationRunner.runSimulation(mode, input);
-                        resultArea.setText(result);
+                        try {
+                            String result = SimulationRunner.runSimulation(mode, input);
+                            resultArea.setText(result);
+                        } catch (Exception simEx) {
+                            resultArea.setText("❌ Error during simulation:\n" + simEx.getMessage());
+                            simEx.printStackTrace();
+                        }
                         cardLayout.show(mainPanel, "result");
                         ((Timer) evt.getSource()).stop();
                     }
                 }).start();
 
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Please enter a valid number.");
+                JOptionPane.showMessageDialog(this, "Please enter a valid positive whole number (e.g., 100, 1000, 5000)");
+            } catch (IllegalArgumentException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
             }
         });
 
@@ -120,8 +127,13 @@ public class TrafficSimulatorGUI extends JFrame {
 
             new Timer(1000, new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-                    String result = SimulationRunner.runSimulation(lastMode, lastInput);
-                    resultArea.setText(result);
+                    try {
+                        String result = SimulationRunner.runSimulation(lastMode, lastInput);
+                        resultArea.setText(result);
+                    } catch (Exception ex) {
+                        resultArea.setText("❌ Error during simulation:\n" + ex.getMessage());
+                        ex.printStackTrace();
+                    }
                     cardLayout.show(mainPanel, "result");
                     ((Timer) evt.getSource()).stop();
                 }

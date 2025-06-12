@@ -12,6 +12,11 @@ public class SimulationRunner {
     public static String runSimulation(String mode, int vehicleCount) {
         StringBuilder output = new StringBuilder();
 
+        // Ensures valid mode
+        if (!Set.of("queue", "stack", "priority").contains(mode)) {
+            throw new IllegalArgumentException("Invalid simulation mode: " + mode);
+        }
+
         // Create the selected data structure mode (queue/stack/priority)
         SimulationMode sim = new SimulationMode(mode);
 
