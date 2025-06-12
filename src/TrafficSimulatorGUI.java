@@ -59,7 +59,15 @@ public class TrafficSimulatorGUI extends JFrame {
         // Start simulation when user clicks the button
         runButton.addActionListener(e -> {
             try {
-                int input = Integer.parseInt(inputField.getText());
+                String cleaned = inputField.getText().replaceAll("\\s+", "");
+                int input = Integer.parseInt(cleaned);
+
+                // Validate input (positive number greater than zero)
+                if (input <= 0) {
+                    JOptionPane.showMessageDialog(this, "Please enter a positive number greater than zero (0).");
+                    return; // Cancel simulation
+                }
+
                 String mode = (String) modeBox.getSelectedItem();
 
                 lastMode = mode;
