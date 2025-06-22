@@ -25,7 +25,7 @@ This Java project simulates traffic behavior at a four-way intersection using th
 ---
 ## 📁 Media Folder Contents
 - 'poster.pdf' - Project presentation poster
-- 'final report.pdf' - Full written report
+- 'final-report.pdf' - Full written report
 
 ---
 ## 👨‍💻 Contributors / Group Members
